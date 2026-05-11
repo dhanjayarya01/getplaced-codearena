@@ -10,18 +10,18 @@ test('Counter should start at 1 and double when clicked', async () => {
   // Importing main.jsx will execute it and render into the #root element
   await import('./main.jsx');
   
-  // Find the count display (the initial count is 1)
-  const countDisplay = await screen.findByText('1');
-  expect(countDisplay).toBeInTheDocument();
-  
   // Find the Double It button
-  const doubleBtn = screen.getByText('Double It!');
+  const doubleBtn = await screen.findByText('Double It!');
+  const getCount = () => document.querySelector('.count-display').textContent;
+  
+  // It should start at 1
+  expect(getCount()).toBe('1');
   
   // Click it -> should become 2
   fireEvent.click(doubleBtn);
-  expect(await screen.findByText('2')).toBeInTheDocument();
+  expect(getCount()).toBe('2');
   
   // Click again -> should become 4
   fireEvent.click(doubleBtn);
-  expect(await screen.findByText('4')).toBeInTheDocument();
+  expect(getCount()).toBe('4');
 });
