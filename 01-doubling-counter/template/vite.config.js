@@ -16,10 +16,6 @@ export default defineConfig({
     watch: {
       usePolling: true,
       interval: 1000,
-    },
-    hmr: {
-      clientPort: 443,      // Forces Vite to connect to Nginx on port 443
-      protocol: 'wss',      // Forces Secure WebSockets
     }
   },
 });
