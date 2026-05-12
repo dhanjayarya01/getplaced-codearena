@@ -23,6 +23,11 @@ public class BookController {
 
     private List<Book> books = new ArrayList<>();
 
+    @GetMapping("/")
+    public String home() {
+        return "Spring Boot API is running! Try accessing /api/books (once you fix the bug).";
+    }
+
     public BookController() {
         books.add(new Book("1984", "George Orwell"));
         books.add(new Book("To Kill a Mockingbird", "Harper Lee"));
