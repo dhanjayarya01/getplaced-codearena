@@ -6,6 +6,10 @@ app = Flask(__name__)
 # In-memory user database
 users = {}
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Flask Auth API is running! Try accessing /login or /register."}), 200
+
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -46,4 +50,4 @@ def login():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
